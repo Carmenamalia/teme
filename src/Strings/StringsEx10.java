@@ -2,12 +2,10 @@ package Strings;
 
 import java.util.Scanner;
 
-public class StringsEx10_ {
+public class StringsEx10 {
     public static void main(String[] args) {
-/* Scrie un program care printeaza in consola daca un String are caracterele in ordine alfabetica, sau nu.
-HINT: atunci cand compari 2 caractere folosind operatorul "<", afli daca ele sunt in ordinea alfabetica.
-De exemplu, expresia 'a'<'b' va returna true, dar 'b'<'a' va returna false.
- */
+// Scrie un program care printeaza in consola daca un String are caracterele in ordine alfabetica, sau nu.
+
          Scanner scanner = new Scanner(System.in);
          String n = scanner.nextLine();
 
