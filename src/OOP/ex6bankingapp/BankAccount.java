@@ -3,8 +3,8 @@ package OOP.ex6bankingapp;
 public abstract class BankAccount {
 
 
-    int balance;
-    String accountNumber;
+    private int balance;
+    private String accountNumber;
 
     public BankAccount(int balance, String accountNumber) {
         this.balance = balance;
