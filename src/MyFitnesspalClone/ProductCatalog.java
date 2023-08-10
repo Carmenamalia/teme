@@ -15,7 +15,7 @@ public class ProductCatalog {
 /* Metoda nu accepta niciun parametru
 Metoda nu returneaza nimic, doar printeaza in consola lista de produse
  */
-        for (int i = 0; i < products.length; i++) {
+        for (int i = 0; i < numberOfProducts; i++) {
             System.out.println(products[i].toString());
         }
     }
@@ -30,31 +30,14 @@ Metoda nu returneaza nimic, doar printeaza in consola lista de produse
         //daca de ex lista e deja plina sau produsul e deja in lista  nu se poate adauga
         //daca e loc putem adauga produsul
         // performSelectedAction();
-        isProductAdded(product);
-        if (isProductAdded(product) || numberOfProducts == maxNumberOfProducts) {
+        if (getProductByName(product.name) != null || numberOfProducts == maxNumberOfProducts) {
             return false;
         } else {
             products[numberOfProducts] = product;
             numberOfProducts++;
+            System.out.println("Produsul a fost adaugat");
         }
         return true;
-    }
-
-    public boolean isProductAdded(Product product) {
-        //parcurg lista de produse
-        //pt fiecare produs, verific daca e egal cu produsul primit ca parametru
-        //daca da,returnam true
-        //daca nu,returnez fals
-        if (numberOfProducts == 0) {
-            return false;
-        }
-        for (int i = 0; i < products.length; i++) {
-            if (product.name.equals(products[i].name)) {
-                System.out.println("Produsul este deja in lista");
-                return true;
-            }
-        }
-        return false;
     }
 
     public Product getProductByName(String name) {
@@ -63,15 +46,29 @@ Metoda returneaza produsul din lista care are numele egal cu numele primit ca pa
 Daca produsul nu a fost gasit, se va returna null
 Sugestie: pentru compararea stringurilor folositi metoda equals in loc de == (Ex: string1.equals(string2) )
  */
-        for (int i = 0; i < products.length; i++) {
+        if (numberOfProducts == 0) {
+            return null;
+        }
+        for (int i = 0; i < numberOfProducts; i++) {
             //daca numele primit e egal cu numele unui produs din lista,returnam produsul
             if (name.equals(products[i].name)) {
                 return products[i];
-            } else {
-                System.out.println("Produsul nu a fost gasit");
-            }//produsul nu a fost gasit
+            }
         }
         return null;
+    }
+
+    public int getProductIndexByName(String name) {
+        if (numberOfProducts == 0) {
+            return -1;
+        }
+        for (int i = 0; i < numberOfProducts; i++) {
+            //daca numele primit e egal cu numele unui produs din lista,returnam indexul
+            if (name.equals(products[i].name)) {
+                return i;
+            }
+        }
+        return -1;
     }
 
     public boolean deleteProduct(String name) {
@@ -82,17 +79,22 @@ Altfel, produsul va fi sters din lista de produse si se va returna true (adica o
 Sugestie: operatia de cautare a unui produs dupa nume se foloseste in 2 locuri astfel ca se poate crea o metoda privata pentru a cauta produsul dupa nume in lista,
  care sa returneze indexul din array la care se afla produsul sau -1 daca nu a fost gasit
  */
-        for (int i = 0; i < products.length; i++) {
-            //caut produsul in lista de produse dupa nume
-            //daca nu a fost gasit se returneaza fals
-            if (!name.equals(products[i].name)) {
-                System.out.println("Produsul nu a fost gasit");
-                return false;
-            } else {
-                //scot produsul din lista
-                products[i] = null;
-            }
+        int index = getProductIndexByName(name);
+        //daca nu a fost gasit se returneaza fals:
+        if (index == -1) {
+            return false;
         }
-        return true;
+        for (int i = index; i < numberOfProducts-1; i++) {
+            //caut produsul in lista de produse dupa nume(pot folosi getProductsByName
+            //trebuie sa gasesc pozitia la care este
+            //stergerea:
+            //parcurg de la   pozitia aflata--- pana la nr de produse
+            //mut la pozitia curenta elem de la pozitia urmatoare
+            products[i] = products[i - 1];
+        }
+            numberOfProducts--;
+            products[numberOfProducts] = null;
+            return true;
     }
+
 }
