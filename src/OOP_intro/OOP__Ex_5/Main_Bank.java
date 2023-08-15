@@ -10,15 +10,14 @@ public class Main_Bank {
         // BankAccount account = new BankAccount(12355, "RON", 2000);
         // BankAccount account2 = new BankAccount(2000, "Euro", 1000);
 
-        account = account.getAccount();
+        account = account.getAccount();//apelez functia care introduce datele contului
         int option = 0;
         do {
             printMenu();
             option = scanner.nextInt();
             performOption(option, account, scanner);
-        } while (option != 3);
+        } while (option != 4);
 
-        // account2.printMaxWithdraw();
     }
 
     public static void printMenu() {
@@ -27,6 +26,7 @@ public class Main_Bank {
         System.out.println("1.Retragere");
         System.out.println("2.Depunere");
         System.out.println("3.Extras de cont");
+         System.out.println("4.Exit");
 
     }
 
@@ -36,7 +36,6 @@ public class Main_Bank {
         int depozit = 0;
         switch (option) {
             case 1:
-                account.printMaxWithdraw();
                 withdrawSum(account, withdraw, scanner);
                 account.getWithdraw(withdraw);
                 break;
@@ -48,20 +47,16 @@ public class Main_Bank {
                 account.printExtras(withdraw, depozit);
                 break;
             default:
-                System.out.println("Optiune invalida,reincearca:");
+                System.out.println("EXIT");
         }
-
     }
 
-
-    public static void withdrawSum(BankAccount account, int withdraw, Scanner scanner) {
+ public static void withdrawSum(BankAccount account, int withdraw, Scanner scanner) {
         System.out.println("introdu suma pe care vrei sa o retragi:");
         withdraw = scanner.nextInt();
-        //int withdraw1 = 950;
-        // int withdraw2 = 1000;
         if (account.getWithdraw(withdraw)) {
-            System.out.println("ai retras: " + withdraw + account.currency);
-            System.out.println("sold ramas: " + account.currentSold + account.currency);
+            System.out.println("ai retras: " + withdraw + " " + account.currency);
+            System.out.println("sold ramas: " + account.currentSold + " " + account.currency);
         } else {
             System.out.println("fonduri insuficiente sau ai depasit limita maxima");
         }
@@ -70,10 +65,8 @@ public class Main_Bank {
     public static void depozitS(BankAccount account, int depozit, Scanner scanner) {
         System.out.println("Introdu suma pe care o depozitezi:");
         depozit = scanner.nextInt();
-        //int depozit1 = 1234;
-        // int depozit2 = 456;
         account.depositSum(depozit);
-        System.out.println("ai depus: " + depozit + account.currency);
+        System.out.println("ai depus: " + depozit + " " + account.currency);
 
     }
 }
