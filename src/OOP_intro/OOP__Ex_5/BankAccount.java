@@ -9,7 +9,7 @@ public class BankAccount {
 
     public BankAccount() {
     }
-
+//creez obiectul BankAccount
     public BankAccount(int currentSold, String currency, int maxWithdraw) {
         this.currentSold = currentSold;
         this.currency = currency;
@@ -32,19 +32,19 @@ public class BankAccount {
      **afisarea unui extras de cont cu situatia actuala a contului
      **afisarea limitei maxime de retragere din cont
      */
-    public BankAccount getAccount() {
+    public BankAccount getAccount() {   //introducem datele contului
         Scanner scanner = new Scanner(System.in);
         int currentSold = scanner.nextInt();
-        scanner.nextLine(); // Consumăm linia goală rămasă în buffer
+        scanner.nextLine(); // Consumăm linia goală rămasă în buffer//aici imi dadea o exceptie "InputMismatchException" de asta am introdus aceasta linie
         String currency = scanner.nextLine().toUpperCase();
         int maxWithdraw = scanner.nextInt();
         return new BankAccount(currentSold, currency, maxWithdraw);
     }
 
-    public boolean getWithdraw(int withdraw) {
+    public boolean getWithdraw(int withdraw) { //metoda pentru retragere
         printMaxWithdraw();
-        if (withdraw <= maxWithdraw && currentSold > withdraw) {
-            currentSold -= withdraw;
+        if (withdraw <= maxWithdraw && currentSold > withdraw) { //retragerea nu trebuie sa depaseasca limita max si soldul curent
+            currentSold -= withdraw; //din soldul curent scadem suma retrasa
             return true;
         } else {
             return false;
@@ -52,12 +52,12 @@ public class BankAccount {
 
     }
 
-    public int depositSum(int depozit) {
-        currentSold += depozit;
+    public int depositSum(int depozit) { //metoda pentru depunere
+        currentSold += depozit;  //la soldul curent adaug suma depozitata
         return currentSold;
     }
 
-    public void printExtras(int withdraw, int depozit) {
+    public void printExtras(int withdraw, int depozit) {  
         System.out.println("Suma initiala: " + currentSold + currency);
         System.out.println("Retragere: " + getWithdraw(withdraw) + currency);
         System.out.println("Depunere: " + depositSum(depozit) + currency);
@@ -65,7 +65,7 @@ public class BankAccount {
     }
 
     public void printMaxWithdraw() {
-        System.out.println(maxWithdraw + " " + currency);
+        System.out.println("Limita maxima de retragere: " + maxWithdraw + " " + currency);
     }
 
 }
