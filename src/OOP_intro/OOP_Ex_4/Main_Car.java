@@ -1,8 +1,8 @@
-package OOP_intro.OOP_Ex_3;
+package OOP_intro.OOP_Ex_4;
 
 import java.util.Scanner;
 
-public class Main {
+public class Main_Car {
     public static void main(String[] args) {
 /* Creeaza un program care sa simuleze o masina
 Clasa Car are urmatoarele atribute:
@@ -40,7 +40,7 @@ Creeaza mai multe masini in Main si apeleaza-le comportamentele.
         Scanner scanner = new Scanner(System.in);
         int option = 1;
         do {
-            printMain();
+            printMenu();
             option = scanner.nextInt();
             performSelectedOption(option,audi,scanner);
            int speed = 0;
@@ -59,7 +59,7 @@ Creeaza mai multe masini in Main si apeleaza-le comportamentele.
         } while (option != 3);
     }
 
-    public static void printMain() {
+    public static void printMenu() {
         System.out.println("------------------");
         System.out.println("Meniu");
         System.out.println("1.accelereaza");

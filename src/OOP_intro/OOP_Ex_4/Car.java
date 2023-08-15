@@ -1,4 +1,4 @@
-package OOP_intro.OOP_Ex_3;
+package OOP_intro.OOP_Ex_4;
 
 public class Car {
     /* atribute:
