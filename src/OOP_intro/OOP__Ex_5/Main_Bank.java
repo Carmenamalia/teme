@@ -36,8 +36,8 @@ public class Main_Bank {
         int depozit = 0;
         switch (option) {
             case 1:
+              account.printMaxWithdraw();
                 withdrawSum(account, withdraw, scanner);
-                account.getWithdraw(withdraw);
                 break;
             case 2:
                 depozitS(account, depozit, scanner);
