@@ -1,4 +1,4 @@
-package OOP.ex2scoala;
+package OOP_pr.ex2scoala;
 
 public class Teacher extends Person{
     String department;

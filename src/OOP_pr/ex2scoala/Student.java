@@ -1,4 +1,4 @@
-package OOP.ex2scoala;
+package OOP_pr.ex2scoala;
 
 public class Student extends Person{
     String groupClass; // (adică clasa în care este studentul)

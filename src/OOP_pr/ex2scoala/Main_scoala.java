@@ -1,4 +1,4 @@
-package OOP.ex2scoala;
+package OOP_pr.ex2scoala;
 
 public class Main_scoala {
     public static void main(String[] args) {

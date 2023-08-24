@@ -1,4 +1,4 @@
-package OOP.ex2scoala;
+package OOP_pr.ex2scoala;
 
 public abstract class Person {
    String firstName;
