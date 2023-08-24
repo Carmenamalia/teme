@@ -1,4 +1,4 @@
-package OOP.ex1geometricshape;
+package OOP_pr.ex1geometricshape;
 
 public interface Shape {
 

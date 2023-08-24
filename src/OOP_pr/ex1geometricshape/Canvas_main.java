@@ -1,4 +1,4 @@
-package OOP.ex1geometricshape;
+package OOP_pr.ex1geometricshape;
 
 public class Canvas_main {
     public static void main(String[] args) {
